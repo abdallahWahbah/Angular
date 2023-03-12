@@ -1,0 +1,56 @@
+<p>practice-template-driven works!</p>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input
+            class="form-control"
+            type="text"
+            id="email"
+            ngModel
+            name="email"
+            required
+            email
+            #email="ngModel"
+        >
+        <span *ngIf="!email.valid && email.touched">Please enter a valid email</span>
+    </div>
+
+    <div class="form-group">
+        <label for="subscriptions">Select a Subscription</label>
+        <select
+            class="form-control"
+            id="subscriptions"
+            [ngModel]="defaultSubscription"
+            name="Subscription"
+        >
+            <!-- <option value="basic">Basic</option>
+            <option value="advanced">Advanced</option>
+            <option value="pro">Pro</option> -->
+            <option *ngFor="let option of options" [value]="option">{{option}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Please enter a password</label>
+        <input
+            class="form-control"
+            type="password"
+            id="password"
+            ngModel
+            name="password"
+            required
+            #password="ngModel"
+        >
+        <span *ngIf="!password.valid && password.touched">Please enter a valid password</span>
+    </div>
+
+    <h4 *ngIf="!form.valid && form.touched">Form is invalid</h4>
+
+    <button 
+        class="btn btn-primary" 
+        type="submit"
+        [disabled]="!form.valid"
+    >
+        Submit
+    </button>
+</form>

@@ -1,0 +1,32 @@
+<h1>------------------------practise time from last-assignment component-------------------------</h1>
+<!-- <button
+    class="btn btn-primary"
+    (click)="showSecret = !showSecret" 
+>
+    Display Details
+</button> -->
+<button
+    class="btn btn-primary"
+    (click)="onToggleDetails()" 
+>
+    Display Details
+</button>
+
+<!-- <div 
+    *ngFor="let logItem of logItems"
+    [ngStyle]="{background: logItem >= 5 ? 'blue' : ''}"
+    [ngClass]="{'white-text': logItem >= 5}"
+>
+    {{logItem}}
+</div> -->
+
+<!-- you can use the index of the loop >>> and you can print it if you wanna print zero (0-indexed) -->
+<div 
+    *ngFor="let logItem of logItems; let ind = index"
+    [ngStyle]="{background: ind >= 4 ? 'blue' : ''}"
+    [ngClass]="{'white-text': ind >= 4}"
+>
+    {{logItem}}
+</div>
+
+<p *ngIf="showSecret">secret password = tuna</p>

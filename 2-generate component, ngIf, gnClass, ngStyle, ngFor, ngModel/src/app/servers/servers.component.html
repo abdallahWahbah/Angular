@@ -1,0 +1,65 @@
+
+<div class="container"> <!--these classes are from bootstrap-->
+    <div class="row">
+        <div class="row-xs-12">
+            <p>servers works!</p>
+            <p>Serversssss component message: the next line will be rendered from serverssssss html</p>
+            <!-- <app-server></app-server>
+            <app-server></app-server> -->
+            <p>{{allowNewServer}}</p>
+            <p [innerText]="allowNewServer"></p>
+            <h3>{{serverCreationStatus}}</h3>
+
+
+            <h1>-------------------------------------------------</h1>
+            <label >Add server name</label>
+            <!-- <input 
+                type="text"
+                clsas="form-control" 
+                (input)="onUpdateServerName($event)"
+            /> -->
+            <input 
+                type="text"
+                clsas="form-control" 
+                [(ngModel)]="serverName"
+            />
+            <!-- <p>{{serverName}}</p> -->
+            <!-- conditional rendering -->
+            <p *ngIf="serverCreated">server ({{serverName}}) was created</p>
+
+            <!-- if-else rendering -->
+            <!-- <p *ngIf="serverCreated; else noServer">server ({{serverName}}) was created</p>
+            <ng-template #noServer><p>No Server was created</p></ng-template> -->
+            <button 
+                class="btn btn-primary" 
+                [disabled]="!allowNewServer"
+                (click)="onCreateServer()"
+            >
+                Add Server
+            </button>
+            <h1>------------------------practise time-------------------------</h1>
+            <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="userName"
+            />
+            <p>{{userName}}</p>
+            <button
+                class="btn btn-primary" 
+                [disabled]="userName === ''"
+                (click)="userName = ''"
+            >
+                reset user name
+            </button>
+            <!-- <button
+                class="btn btn-primary" 
+                [disabled]="!userName"
+                (click)="resetUserName()"
+            >
+                reset user name
+            </button> -->
+            <h1>----------------------Loop---------------------------</h1>
+            <app-server *ngFor="let server of servers"></app-server>
+        </div>
+    </div>
+</div>
